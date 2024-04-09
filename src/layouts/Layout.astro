@@ -1,0 +1,74 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+<style is:global>
+  :root {
+    --accent-gradient: linear-gradient(
+      90deg,
+      rgba(140, 142, 253, 1) 0%,
+      rgba(81, 83, 239, 1) 48%,
+      rgba(140, 142, 253, 1) 100%
+    );
+    --color-1: rgba(140, 142, 253, 1);
+    --color-2: rgba(81, 83, 239, 1);
+  }
+  html {
+    font-family: system-ui, sans-serif;
+    background: #020617;
+  }
+  .text-gradient {
+    background-image: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    background-position: 0%;
+  }
+  h2 {
+    text-align: center;
+    color: white;
+    font-size: 50px;
+  }
+  h3 {
+    color: white;
+  }
+
+  a.button {
+    display: flex;
+    text-decoration: none;
+    color: white;
+    background:
+      linear-gradient(#020617, #020617) padding-box,
+      linear-gradient(to right, var(--color-1), var(--color-2)) border-box;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    width: fit-content;
+    padding-inline-start: 2rem;
+    padding-inline-end: 2rem;
+    padding-block-start: 1rem;
+    padding-block-end: 1rem;
+    animation: background-color 0.5s;
+    font-weight: 500;
+    align-items: center;
+    gap: 0.5rem;
+    margin: auto;
+  }
+</style>

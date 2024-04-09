@@ -1,0 +1,54 @@
+<h2 class="text-gradient">Projects</h2>
+<div class="projects">
+  <div class="card-project">
+    <img src="./machupicchu-luna.png" alt="" />
+    <h3 class="title-project">Machupicchu Lama</h3>
+    <a href="https://machupicchulama.com/" target="_blank">
+      <img src="./icon-link.svg" alt="" />
+      Visit Source
+    </a>
+  </div>
+  <div class="card-project">
+    <img src="./machupicchu-luna.png" alt="" />
+    <h3 class="title-project">Isometric Room</h3>
+    <a href="https://machupicchulama.com/" target="_blank">
+      <img src="./icon-link.svg" alt="" />
+      Visit Source
+    </a>
+  </div>
+</div>
+
+<style>
+  .projects {
+    display: flex;
+    gap: 2rem;
+  }
+  .card-project {
+    padding: 2rem;
+    border-radius: 32px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: #050a20;
+    flex: 1;
+  }
+  h3 {
+    font-size: 30px;
+    text-align: center;
+  }
+  a {
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .card-project > img {
+    width: 100%;
+  }
+  @media screen and (max-width: 636px) {
+    .projects {
+      flex-direction: column;
+    }
+  }
+</style>

@@ -1,0 +1,76 @@
+---
+const SKILLS = {};
+---
+
+<div class="skills">
+  <div class="skill-item box1">
+    <img src="./blender.png" alt="" />
+  </div>
+  <div class="skill-item box2">
+    <img src="./figma.png" alt="" />
+  </div>
+  <div class="skill-item box1">
+    <img src="./vue.png" alt="" />
+  </div>
+  <div class="skill-item box2">
+    <img src="./js.png" alt="" />
+  </div>
+  <div class="skill-item box2">
+    <img src="./astro.png" alt="" />
+  </div>
+  <div class="skill-item box1">
+    <img src="./wordpress.png" alt="" />
+  </div>
+  <div class="skill-item box2">
+    <img src="./react.png" alt="" />
+  </div>
+  <div class="skill-item box1">
+    <img src="./photoshop.png" alt="" />
+  </div>
+  <div class="skill-item box1">
+    <img src="./github.png" alt="" />
+  </div>
+  <div class="skill-item box2">
+    <img src="./git.png" alt="" />
+  </div>
+  <div class="skill-item box1">
+    <img src="./nodejs.png" alt="" />
+  </div>
+  <div class="skill-item box2">
+    <img src="./threejs.png" alt="" />
+  </div>
+</div>
+
+<style>
+  .skills {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+    min-width: 24rem;
+    margin: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: #050a20;
+    border-radius: 32px;
+    padding-block-start: 2rem;
+  }
+  .skill-item {
+  }
+  .box1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../box1.png");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .box2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../box2.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 160px;
+  }
+</style>

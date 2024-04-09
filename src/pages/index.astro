@@ -1,0 +1,211 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import Skills from "../components/Skills.astro";
+import Footer from "../components/Footer.astro";
+import "@fontsource/inter/700.css";
+import "@fontsource/inter/500.css";
+import Projects from "../components/Projects.astro";
+---
+
+<Layout title="Welcome to Astro.">
+  <main>
+    <div class="hero">
+      <img src="./img-principal.png" alt="" />
+      <span class="available">
+        <span class="online"></span>
+        Available To Work
+      </span>
+      <h1 class="text-gradient">Arturo Corrales Huarca</h1>
+      <h2>
+        I'm a <span id="sentence" class="text-gradient"></span>
+      </h2>
+      <div class="buttons">
+        <a
+          target="_blank"
+          class="button"
+          href="https://github.com/Arturocorraleshuarca"
+        >
+          <img src="./icon-github.svg" alt="" />
+          My Github
+        </a>
+        <a
+          target="_blank"
+          class="button"
+          href="https://www.linkedin.com/in/arturo-corrales-huarca/"
+        >
+          <img src="./icon-linkedin.svg" alt="" />
+          My LinkedIn
+        </a>
+        <a
+          target="_blank"
+          class="button"
+          href="https://www.behance.net/arturocorrale"
+        >
+          <img src="./icon-behance.svg" alt="" />
+          My Behance
+        </a>
+        <a target="_blank" class="button" href="https://wa.link/83d1c1">
+          <img src="./icon-whatsapp.svg" alt="" />
+          Watsapp Me
+        </a>
+      </div>
+    </div>
+    <Skills />
+    <Projects />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  @keyframes changeOpacity {
+    from {
+      opacity: 1; /* opacidad al principio de la animación */
+    }
+    to {
+      opacity: 0.5; /* opacidad al final de la animación */
+    }
+  }
+  body {
+    font-family: "Inter", sans-serif;
+  }
+  main {
+    max-width: 900px;
+    margin: auto;
+  }
+
+  .hero {
+    padding-block-start: 3rem;
+    padding-block-end: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero > img {
+    width: 500px;
+  }
+  .available {
+    color: rgba(255, 255, 255, 0.353);
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.389);
+    padding-inline-start: 2rem;
+    padding-inline-end: 2rem;
+    padding-block-start: 0.5rem;
+    padding-block-end: 0.5rem;
+    border-radius: 30px;
+    gap: 0.5rem;
+  }
+  .online {
+    display: block;
+    height: 10px;
+    width: 10px;
+    background-color: #6dd33d;
+    border-radius: 20px;
+    animation: changeOpacity 1s infinite alternate;
+  }
+  h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    margin: 0;
+  }
+  h2 {
+    color: white;
+    text-align: center;
+    font-weight: 500;
+  }
+  .buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .buttons a {
+    box-sizing: border-box;
+    justify-content: center;
+  }
+
+  a.button:hover {
+    background: var(--accent-gradient);
+  }
+  @media screen and (max-width: 936px) {
+    .buttons a {
+      flex-basis: calc(50% - 1rem);
+    }
+  }
+  @media screen and (max-width: 636px) {
+    .hero > img {
+      width: 400px;
+    }
+    .buttons {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      padding-top: 2rem;
+    }
+    a.button {
+      width: 80%;
+      text-align: center;
+    }
+  }
+</style>
+<script is:inline>
+  function $(ele) {
+    return document.getElementById(ele);
+  }
+
+  async function typeSentence(sentence, eleRef, delay = 100) {
+    const letters = sentence.split("");
+    let i = 0;
+    while (i < letters.length) {
+      await waitForMs(delay);
+      $(eleRef).append(letters[i]);
+      i++;
+    }
+    return;
+  }
+
+  function waitForMs(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  // CAROUSEL
+  const carouselText = [
+    { text: "Frontend Developer", color: "red" },
+    { text: "UI Designer", color: "orange" },
+  ];
+  async function deleteSentence(eleRef) {
+    const sentence = $(eleRef).innerHTML;
+    const letters = sentence.split("");
+    let i = 0;
+    while (letters.length > 0) {
+      await waitForMs(100);
+      letters.pop();
+      $(eleRef).innerHTML = letters.join("");
+    }
+  }
+
+  async function carousel(carouselList, eleRef) {
+    var i = 0;
+    while (true) {
+      updateFontColor(eleRef, carouselList[i].color);
+      await typeSentence(carouselList[i].text, eleRef);
+      await waitForMs(1500);
+      await deleteSentence(eleRef);
+      await waitForMs(500);
+      i++;
+      if (i >= carouselList.length) {
+        i = 0;
+      }
+    }
+  }
+
+  function updateFontColor(eleRef, color) {
+    $(eleRef).style.color = color;
+  }
+
+  carousel(carouselText, "sentence");
+</script>
